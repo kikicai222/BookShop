@@ -8,6 +8,8 @@ import Rights from '../views/power/Rights.vue'
 import Roles from '../views/power/Roles.vue'
 import Cate from '../views/goods/Cate.vue'
 import Params from '../views/goods/Params.vue'
+import List from '../views/goods/List.vue'
+import Add from '../views/goods/Add.vue'
 
 
 Vue.use(VueRouter)
@@ -27,8 +29,8 @@ const routes = [
     redirect: '/welcome',
     children: [
       {
-      path: '/welcome',
-      component: Welcome
+        path: '/welcome',
+        component: Welcome
       },
       {
         path: '/users',
@@ -49,6 +51,14 @@ const routes = [
       {
         path: '/params',
         component: Params
+      },
+      {
+        path: '/goods',
+        component: List,
+      },
+      {
+        path: '/goods/add',
+        component: Add
       }
 
     ]
@@ -61,10 +71,10 @@ const router = new VueRouter({
 
 //挂载路由导航守卫
 router.beforeEach((to, from, next) => {
- //to将要访问的路径
- //from代表从那个路径跳转而来
- //next是一个函数，表示放行
- //   next()  放行    next('/login')  强制跳转
+  //to将要访问的路径
+  //from代表从那个路径跳转而来
+  //next是一个函数，表示放行
+  //   next()  放行    next('/login')  强制跳转
 
   if (to.path === '/login') return next()
   //获取token
